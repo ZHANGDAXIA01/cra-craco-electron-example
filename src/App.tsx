@@ -3,10 +3,8 @@ import logo from './logo.svg';
 import classes from './App.module.css';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from 'react-apollo'
-
-import Logo from './Logo/Logo';
-import TestFs from './model/TestFs';
-// import WrappedLogin from './Login'
+import WrappedLogin from './page/Login/Login'
+import Layouts from './component/Layout'
 
 // Create the apollo client, with the Apollo caching. 
 const apolloClient = new ApolloClient({
@@ -18,10 +16,10 @@ class App extends Component {
     render() {
         return (
           <div className={classes.App}>
-            {/* <header className={classes.AppHeader}>
-              <Logo />
-              <textarea className={classes.TextArea} value={TestFs.getDirectoryListing()} readOnly rows={20} />
-            </header> */}
+            <ApolloProvider client={apolloClient}>
+              {/* <WrappedLogin /> */}
+              <Layouts />
+            </ApolloProvider>
           </div>
         );
     }
