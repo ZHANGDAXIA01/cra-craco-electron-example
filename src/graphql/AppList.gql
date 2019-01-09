@@ -1,0 +1,11 @@
+query AppLists($first:Int,$after:ID,$userID:String!){
+  posts(first:$first,after:$after,userID:$userID) {
+    first
+    after
+    isEnd
+    list{
+     id
+     content
+     type
+    }
+  }

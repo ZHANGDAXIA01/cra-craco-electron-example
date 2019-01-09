@@ -2,6 +2,8 @@ import * as React from 'react'
 import { Component } from 'react'
 import { Layout, Divider } from 'antd'
 import "./index.css"
+import HeaderMenu from './HeaderMenu'
+import User from '../User'
 import SiderMenu from './SiderMenu'
 import App from '../../page/App/App'
 
@@ -32,6 +34,8 @@ class Layouts extends Component<Props, State> {
       <Layout className="layoutCon">
         <Header className="header">
           <img src='/images/ganjiang-font-dark.png' /><Divider type="vertical" />
+          <HeaderMenu />
+          <User />
         </Header>
         <Layout>
           <Sider

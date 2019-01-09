@@ -18,11 +18,8 @@ const menuList = [
     key: 'app',
     child: [
       {
-        name: "item1",
-        key: 'item1'
-      },{
-        name: "item2",
-        key: 'item2'
+        name: "app管理",
+        key: 'app管理'
       }
     ]
   },{
@@ -88,7 +85,7 @@ class SiderMenu extends PureComponent<Props, {}> {
           // onOpenChange={this.onOpenChange} 
           // onClick={this.siderClick} 
           // openKeys={this.props.openKeys} 
-          defaultSelectedKeys={['item1']}
+          defaultSelectedKeys={['app管理']}
           defaultOpenKeys={['app']}
           // selectedKeys={siderSelectedValue === 'createTask' ? ['taskManage'] : [siderSelectedValue]}
         >

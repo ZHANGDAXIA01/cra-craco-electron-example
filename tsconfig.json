@@ -15,13 +15,14 @@
     "rootDir": "src",
     "strict": false,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false,
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "experimentalDecorators": true,
+    "isolatedModules": true
   },
   "include": [
     "src"
