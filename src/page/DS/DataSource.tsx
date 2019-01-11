@@ -4,7 +4,7 @@ import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Icon, Input} from 'antd'
 import { withRouter } from 'react-router-dom'
-import AppTable from './AppTable'
+import DSTable from './DSTable'
 import "./index.css"
 
 const Search = Input.Search
@@ -25,7 +25,7 @@ const CREATE_POST = gql`
   }
 `
 @withRouter
-class APP extends Component<Props, {}> {
+class DataSource extends Component<Props, {}> {
 
   state = {
     searchValue: ''
@@ -63,10 +63,10 @@ class APP extends Component<Props, {}> {
     return (
       <div className="appCon contentItem">
         <div className="contentHeader">
-          <h2>app管理</h2>
+          <h2>datasource管理</h2>
           <div className='headerSearch'>
             <Search
-              placeholder="搜索APP名称"
+              placeholder="搜索DataSource名称"
               onSearch={(e) => this.onSearchChange(e)}
               onChange={(e) => this.setSearchValue(e)}
               style={{ width: 190 }}
@@ -75,10 +75,10 @@ class APP extends Component<Props, {}> {
             {this.state.searchValue ? <Icon type='close-circle' onClick={() => { this.setSeach('', 'del') }} /> : null}
           </div>
         </div>
-        <AppTable />
+        <DSTable />
       </div>
     )
   }
 }
 
-export default APP
+export default DataSource

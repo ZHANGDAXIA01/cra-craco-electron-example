@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
+import { withRouter } from 'react-router-dom'
 import { Form, Icon, Input, Button } from 'antd'
 import "./Login.css"
 
@@ -18,6 +19,7 @@ const CREATE_POST = gql`
     }
   }
 `
+@withRouter
 class Login extends Component<Props, {}> {
   // constructor(props) {
   //   super(props)

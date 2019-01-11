@@ -8,29 +8,14 @@ import {
 } from 'antd'
 import { graphql, Mutation, Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import moment from 'moment'
 import DefaultActionCol from '../../component/ListTable/DefaultActionCol'
 import ButtonWithFormModal from '../../component/ListTable/ButtonWithFormModal'
 import "./index.css"
 
-// const AppList = require('../../graphql/AppList.gql')
+const AppListBySearch = require('../../graphql/AppListBySearch.gql')
 const TextArea = Input.TextArea
 const Option = Select.Option
 
-const AppList = gql`
-  query AppList {
-    appLists {
-      test_case_cfg,
-      doc_center,
-      id,
-      name,
-      token,
-      language,
-      gmt_modified,
-      author
-    }
-  }
-`
 interface Props {
   store?: any
   form?: any
@@ -63,7 +48,7 @@ const taskList = [{
 }]
 
 @observer
-class AppTable extends Component<Props, State> {
+class ApiTable extends Component<Props, State> {
 
   // @graphql(AppListBySearch, {
   //   options: props => {
@@ -141,6 +126,10 @@ class AppTable extends Component<Props, State> {
         dataIndex: "language",
         key: "language",
       },{
+        title: "template",
+        dataIndex: "template",
+        key: "template",
+      },{
         title: "author",
         dataIndex: "author",
         key: "tempauthorlate",
@@ -154,7 +143,6 @@ class AppTable extends Component<Props, State> {
         title: "最近修改时间",
         dataIndex: "gmt_modified",
         key: "gmt_modified",
-        render: (text, record) =>  moment(new Date(text)).format("YYYY-MM-DD HH:mm:ss")
       },{
         title: "操作",
         width: "20%",
@@ -400,18 +388,19 @@ class AppTable extends Component<Props, State> {
   }
 
   renderTable = () => {
-    return <Query query={AppList} >
+    return <Query query={AppListBySearch} variables={{ searchVal: 5 }}>
       {({ loading, error, data }) => {
         if (loading) return 'Loading...';
         if (error) return `Error! ${error.message}`;
 
         return (
-          <Table
-            columns={this.renderColumn()}
-            dataSource={data.appLists}
-            pagination={false}
-            rowKey={record => record.id}
-          />
+          <select name="dog">
+            {data.dogs.map(dog => (
+              <option key={dog.id} value={dog.breed}>
+                {dog.breed}
+              </option>
+            ))}
+          </select>
         );
       }}
     </Query>
@@ -420,12 +409,17 @@ class AppTable extends Component<Props, State> {
   render() {
     return (
       <div className="appTableCon">
-        {this.renderTable()}
+        <Table
+          columns={this.renderColumn()}
+          dataSource={taskList}
+          pagination={false}
+          rowKey={record => record.id}
+        />
         {
           this.state.isVisible && (
             <Modal
               visible={this.state.isVisible}
-              title='App 编辑'
+              title='Api 编辑'
               onCancel={this.onCloseModal}
             >
               {this.renderContent()}
@@ -437,4 +431,4 @@ class AppTable extends Component<Props, State> {
   }
 }
 
-export default AppTable
+export default ApiTable

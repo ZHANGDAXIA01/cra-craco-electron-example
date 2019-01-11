@@ -1,0 +1,8 @@
+query AppListBySearch($searchVal: String){
+  posts(val:$searchVal) {
+    list{
+     id
+     content
+     type
+    }
+}

@@ -1,11 +1,14 @@
 import * as React from 'react'
 import { Component } from 'react'
 import { Layout, Divider } from 'antd'
+import {  Route, Switch } from 'react-router-dom'
 import "./index.css"
 import HeaderMenu from './HeaderMenu'
 import User from '../User'
 import SiderMenu from './SiderMenu'
 import App from '../../page/App/App'
+import Api from '../../page/Api/Api'
+import DataSource from '../../page/DS/DataSource'
 
 const { Header, Content, Sider } = Layout;
 
@@ -49,7 +52,11 @@ class Layouts extends Component<Props, State> {
           </Sider>
           <Layout style={{ padding: '0 24px 24px' }}>
             <Content>
-              <App />
+              <Switch>
+                <Route path="/home/app" component={App}/>
+                <Route path="/home/api" component={Api}/>
+                <Route path="/home/ds" component={DataSource}/>
+              </Switch> 
             </Content>
           </Layout>
         </Layout>
